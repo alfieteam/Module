@@ -62,6 +62,24 @@ nodes:
     can_range: [0x141, 0x160]  # Reserved CAN ID range for Node 3
     description: Modular switch module with 12 inputs. Each pair of buttons controls one device.
     devices:
+      - id: 0x121
+        name: NeoPixel On/Dim Up
+        description: Controls turning on or dimming up the NeoPixel strip.
+      - id: 0x122
+        name: NeoPixel Off/Dim Down
+        description: Controls turning off or dimming down the NeoPixel strip.
+      - id: 0x123
+        name: Blind Open
+        description: Opens the electric blinds.
+      - id: 0x124
+        name: Blind Close
+        description: Closes the electric blinds.
+      - id: 0x125
+        name: Main Light On/Dim Up
+        description: Controls turning on or dimming up the main light.
+      - id: 0x126
+        name: Main Light Off/Dim Down
+        description: Controls turning off or dimming down the main light.
       - id: 0x141
         name: Bathroom Light On/Dim Up
         description: Controls turning on or dimming up the bathroom light.
@@ -69,34 +87,16 @@ nodes:
         name: Bathroom Light Off/Dim Down
         description: Controls turning off or dimming down the bathroom light.
       - id: 0x143
-        name: NeoPixel On/Dim Up
-        description: Controls turning on or dimming up the NeoPixel strip.
-      - id: 0x144
-        name: NeoPixel Off/Dim Down
-        description: Controls turning off or dimming down the NeoPixel strip.
-      - id: 0x145
         name: Towel Rail On
         description: Turns on the towel rail.
-      - id: 0x146
+      - id: 0x144
         name: Towel Rail Off
         description: Turns off the towel rail.
-      - id: 0x147
-        name: Window Blind Open
-        description: Opens the window blind.
-      - id: 0x148
-        name: Window Blind Close
-        description: Closes the window blind.
-      - id: 0x149
+      - id: 0x145
         name: Outdoor Light On
         description: Turns on the outdoor light.
-      - id: 0x14A
+      - id: 0x146
         name: Outdoor Light Off
         description: Turns off the outdoor light.
-      - id: 0x14B
-        name: Main Light On/Dim Up
-        description: Controls turning on or dimming up the main light.
-      - id: 0x14C
-        name: Main Light Off/Dim Down
-        description: Controls turning off or dimming down the main light.
 
 # Add additional nodes below with incremented ranges (e.g., Node 4: 0x161–0x180, etc.)
