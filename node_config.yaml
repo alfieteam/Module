@@ -9,13 +9,28 @@ nodes:
     description: Module for environmental and other sensors.
     sensors:
       - id: 0x101
-        name: Temperature Sensor (External)
-        description: Measures environmental temperature in °C.
+        name: Temperature (BMP280)
+        description: Measures environmental temperature in °C via BMP280.
       - id: 0x102
-        name: Humidity Sensor
-        description: Measures relative humidity in %.
+        name: Humidity (BMP280)
+        description: Measures relative humidity in % via BMP280.
       - id: 0x103
-        name: Pressure Sensor
-        description: Measures atmospheric pressure in hPa.
+        name: Pressure (BMP280)
+        description: Measures atmospheric pressure in hPa via BMP280.
+      - id: 0x104
+        name: Voltage (Miter)
+        description: Measures voltage in V via Miter.
+      - id: 0x105
+        name: Current (Miter)
+        description: Measures current in A via Miter.
+      - id: 0x106
+        name: Power (Miter)
+        description: Measures power in W via Miter.
+      - id: 0x107
+        name: Power Factor (Miter)
+        description: Measures power factor via Miter.
+      - id: 0x108
+        name: Total Energy (Miter)
+        description: Measures total active electric energy via Miter.
 
 # Add additional nodes below with incremented ranges (e.g., Node 2: 0x121–0x140, etc.)
