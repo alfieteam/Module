@@ -162,4 +162,34 @@ nodes:
         name: Channel 4 - 0-10V Dimmer
         description: Controls the brightness of the fourth AC light channel.
 
-# Add additional nodes below with incremented ranges (e.g., Node 8: 0x221–0x240, etc.)
+  - id: 8
+    name: Window Blind Module
+    can_range: [0x221, 0x230]  # Reserved CAN ID range for Node 8
+    description: Module for controlling one window blind with up, down, and stop functions.
+    devices:
+      - id: 0x221
+        name: Blind - Up
+        description: Raises the window blind.
+      - id: 0x222
+        name: Blind - Down
+        description: Lowers the window blind.
+      - id: 0x223
+        name: Blind - Stop
+        description: Stops the window blind movement.
+
+  - id: 9
+    name: MVHR Module
+    can_range: [0x231, 0x240]  # Reserved CAN ID range for Node 9
+    description: Module for ventilation and heating recovery with temperature, pressure, and humidity sensors (BMP280).
+    sensors:
+      - id: 0x231
+        name: Temperature Sensor (BMP280)
+        description: Measures ambient temperature for ventilation system.
+      - id: 0x232
+        name: Humidity Sensor (BMP280)
+        description: Measures ambient humidity for ventilation system.
+      - id: 0x233
+        name: Pressure Sensor (BMP280)
+        description: Measures ambient pressure for ventilation system.
+
+# Add additional nodes below with incremented ranges (e.g., Node 10: 0x241–0x260, etc.)
