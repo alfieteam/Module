@@ -191,5 +191,25 @@ nodes:
       - id: 0x233
         name: Pressure Sensor (BMP280)
         description: Measures ambient pressure for ventilation system.
+        
+ - id: 10
+    name: 2nd Sensors Module
+    can_range: [0x241, 0x260]  # Reserved CAN ID range for Node 10
+    description: This module supports additional sensors such as door sensors, water meters, water pressure, PIR, and IR for air conditioning.
+    sensors:
+      - id: 0x241
+        name: Door Sensor
+        description: Detects whether the door is open or closed.
+      - id: 0x242
+        name: Water Meter
+        description: Measures water usage in liters.
+      - id: 0x243
+        name: Water Pressure Sensor
+        description: Measures water pressure in the pipeline.
+      - id: 0x244
+        name: PIR Sensor
+        description: Detects motion using a Passive Infrared Sensor.
+      - id: 0x245
+        name: IR Remote Controller
+        description: Controls air conditioning or other IR-enabled devices.
 
-# Add additional nodes below with incremented ranges (e.g., Node 10: 0x241–0x260, etc.)
