@@ -33,4 +33,28 @@ nodes:
         name: Total Energy (Miter)
         description: Measures total active electric energy via Miter.
 
-# Add additional nodes below with incremented ranges (e.g., Node 2: 0x121–0x140, etc.)
+  - id: 2
+    name: Switch Module
+    can_range: [0x121, 0x140]  # Reserved CAN ID range for Node 2
+    description: Modular switch module with 6 inputs. Each switch controls different devices.
+    devices:
+      - id: 0x121
+        name: NeoPixel On/Dim Up
+        description: Controls turning on or dimming up the NeoPixel strip.
+      - id: 0x122
+        name: NeoPixel Off/Dim Down
+        description: Controls turning off or dimming down the NeoPixel strip.
+      - id: 0x123
+        name: Blind Open
+        description: Opens the electric blinds.
+      - id: 0x124
+        name: Blind Close
+        description: Closes the electric blinds.
+      - id: 0x125
+        name: Main Light On/Dim Up
+        description: Controls turning on or dimming up the main light.
+      - id: 0x126
+        name: Main Light Off/Dim Down
+        description: Controls turning off or dimming down the main light.
+
+# Add additional nodes below with incremented ranges (e.g., Node 3: 0x141–0x160, etc.)
