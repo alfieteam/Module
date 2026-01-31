@@ -126,4 +126,22 @@ nodes:
         name: Towel Rail Off
         description: Turns off the towel rail.
 
-# Add additional nodes below with incremented ranges (e.g., Node 6: 0x191–0x1B0, etc.)
+  - id: 6
+    name: DC Dimming Module
+    can_range: [0x191, 0x1B0]  # Reserved CAN ID range for Node 6
+    description: Module for controlling DC circuits with 4 PWM channels for dimming.
+    devices:
+      - id: 0x191
+        name: Channel 1 - PWM Control
+        description: Controls the brightness of the first DC light channel via PWM.
+      - id: 0x192
+        name: Channel 2 - PWM Control
+        description: Controls the brightness of the second DC light channel via PWM.
+      - id: 0x193
+        name: Channel 3 - PWM Control
+        description: Controls the brightness of the third DC light channel via PWM.
+      - id: 0x194
+        name: Channel 4 - PWM Control
+        description: Controls the brightness of the fourth DC light channel via PWM.
+
+# Add additional nodes below with incremented ranges (e.g., Node 7: 0x1B1–0x1D0, etc.)
