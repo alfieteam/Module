@@ -99,4 +99,31 @@ nodes:
         name: Outdoor Light Off
         description: Turns off the outdoor light.
 
-# Add additional nodes below with incremented ranges (e.g., Node 4: 0x161–0x180, etc.)
+  - id: 4
+    name: UFH Module
+    can_range: [0x161, 0x180]  # Reserved CAN ID range for Node 4
+    description: Module for underfloor heating control.
+    sensors:
+      - id: 0x161
+        name: Thermistor Sensor 1
+        description: Measures floor temperature (Sensor 1) and sends data to Home Assistant.
+      - id: 0x162
+        name: Thermistor Sensor 2
+        description: Measures floor temperature (Sensor 2) and sends data to Home Assistant.
+
+  - id: 5
+    name: Power Relay Module
+    can_range: [0x181, 0x190]  # Reserved CAN ID range for Node 5
+    description: Module for controlling high-power devices like boiler and towel rail.
+    devices:
+      - id: 0x181
+        name: Boiler Control
+        description: Controls the state (ON/OFF) of the boiler.
+      - id: 0x143
+        name: Towel Rail On
+        description: Turns on the towel rail.
+      - id: 0x144
+        name: Towel Rail Off
+        description: Turns off the towel rail.
+
+# Add additional nodes below with incremented ranges (e.g., Node 6: 0x191–0x1B0, etc.)
