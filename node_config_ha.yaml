@@ -1,0 +1,456 @@
+# Node Configuration for Smart Home Modules
+# This file contains a list of all nodes in the system, their assigned CAN ID ranges,
+# and descriptions of their functionalities, sensors, and devices.
+#
+# NOTE: The optional `ha:` section is a *suggested* Home Assistant-friendly view
+#       (platform/type hints, grouping, and metadata). It does not change the
+#       canonical meaning of `sensors:` / `devices:`; it just makes mapping easier.
+
+nodes:
+- id: 1
+  name: Sensors Module
+  can_range:
+  - 0x101
+  - 0x114
+  description: Module for environmental and other sensors.
+  sensors:
+  - id: 0x101
+    name: Temperature (BMP280)
+    description: Measures environmental temperature in °C via BMP280.
+  - id: 0x102
+    name: Humidity (BMP280)
+    description: Measures relative humidity in % via BMP280.
+  - id: 0x103
+    name: Pressure (BMP280)
+    description: Measures atmospheric pressure in hPa via BMP280.
+  - id: 0x104
+    name: Voltage (Miter)
+    description: Measures voltage in V via Miter.
+  - id: 0x105
+    name: Current (Miter)
+    description: Measures current in A via Miter.
+  - id: 0x106
+    name: Power (Miter)
+    description: Measures power in W via Miter.
+  - id: 0x107
+    name: Power Factor (Miter)
+    description: Measures power factor via Miter.
+  - id: 0x108
+    name: Total Energy (Miter)
+    description: Measures total active electric energy via Miter.
+  module_type: sensors
+  ha:
+    device:
+      manufacturer: AlfieTeam
+      model: Sensors Module
+      identifiers:
+      - alfieteam_node_1
+    entities:
+    - platform: sensor
+      can_id: 0x101
+      name: Temperature (BMP280)
+      device_class: temperature
+      unit_of_measurement: °C
+    - platform: sensor
+      can_id: 0x102
+      name: Humidity (BMP280)
+      device_class: humidity
+      unit_of_measurement: '%'
+    - platform: sensor
+      can_id: 0x103
+      name: Pressure (BMP280)
+      device_class: pressure
+      unit_of_measurement: hPa
+    - platform: sensor
+      can_id: 0x104
+      name: Voltage (Miter)
+      device_class: voltage
+      unit_of_measurement: V
+    - platform: sensor
+      can_id: 0x105
+      name: Current (Miter)
+      device_class: current
+      unit_of_measurement: A
+    - platform: sensor
+      can_id: 0x106
+      name: Power (Miter)
+      device_class: power
+      unit_of_measurement: W
+    - platform: sensor
+      can_id: 0x107
+      name: Power Factor (Miter)
+      device_class: power_factor
+    - platform: sensor
+      can_id: 0x108
+      name: Total Energy (Miter)
+      device_class: energy
+      unit_of_measurement: kWh
+- id: 2
+  name: Switch Module
+  can_range:
+  - 0x121
+  - 0x140
+  description: Modular switch module with 6 inputs. Each switch controls different devices.
+  devices:
+  - id: 0x121
+    name: NeoPixel On/Dim Up
+    description: Controls turning on or dimming up the NeoPixel strip.
+  - id: 0x122
+    name: NeoPixel Off/Dim Down
+    description: Controls turning off or dimming down the NeoPixel strip.
+  - id: 0x123
+    name: Blind Open
+    description: Opens the electric blinds.
+  - id: 0x124
+    name: Blind Close
+    description: Closes the electric blinds.
+  - id: 0x125
+    name: Main Light On/Dim Up
+    description: Controls turning on or dimming up the main light.
+  - id: 0x126
+    name: Main Light Off/Dim Down
+    description: Controls turning off or dimming down the main light.
+  module_type: input_switches
+  ha:
+    device:
+      manufacturer: AlfieTeam
+      model: Switch Module
+      identifiers:
+      - alfieteam_node_2
+    entities:
+    - platform: button
+      can_id: 0x121
+      name: NeoPixel On/Dim Up
+    - platform: button
+      can_id: 0x122
+      name: NeoPixel Off/Dim Down
+    - platform: button
+      can_id: 0x123
+      name: Blind Open
+    - platform: button
+      can_id: 0x124
+      name: Blind Close
+    - platform: button
+      can_id: 0x125
+      name: Main Light On/Dim Up
+    - platform: button
+      can_id: 0x126
+      name: Main Light Off/Dim Down
+- id: 3
+  name: Switch Module Extended
+  can_range:
+  - 0x141
+  - 0x160
+  description: Modular switch module with 12 inputs. Each pair of buttons controls one device.
+  devices:
+  - id: 0x141
+    name: Bathroom Light On/Dim Up
+    description: Controls turning on or dimming up the bathroom light.
+  - id: 0x142
+    name: Bathroom Light Off/Dim Down
+    description: Controls turning off or dimming down the bathroom light.
+  - id: 0x143
+    name: Towel Rail On
+    description: Turns on the towel rail.
+  - id: 0x144
+    name: Towel Rail Off
+    description: Turns off the towel rail.
+  - id: 0x145
+    name: Outdoor Light On
+    description: Turns on the outdoor light.
+  - id: 0x146
+    name: Outdoor Light Off
+    description: Turns off the outdoor light.
+  module_type: input_switches
+  ha:
+    device:
+      manufacturer: AlfieTeam
+      model: Switch Module Extended
+      identifiers:
+      - alfieteam_node_3
+    entities:
+    - platform: button
+      can_id: 0x141
+      name: Bathroom Light On/Dim Up
+    - platform: button
+      can_id: 0x142
+      name: Bathroom Light Off/Dim Down
+    - platform: button
+      can_id: 0x143
+      name: Towel Rail On
+    - platform: button
+      can_id: 0x144
+      name: Towel Rail Off
+    - platform: button
+      can_id: 0x145
+      name: Outdoor Light On
+    - platform: button
+      can_id: 0x146
+      name: Outdoor Light Off
+- id: 4
+  name: UFH Module
+  can_range:
+  - 0x161
+  - 0x180
+  description: Module for underfloor heating control.
+  sensors:
+  - id: 0x161
+    name: Thermistor Sensor 1
+    description: Measures floor temperature (Sensor 1) and sends data to Home Assistant.
+  - id: 0x162
+    name: Thermistor Sensor 2
+    description: Measures floor temperature (Sensor 2) and sends data to Home Assistant.
+  module_type: ufh
+  ha:
+    device:
+      manufacturer: AlfieTeam
+      model: UFH Module
+      identifiers:
+      - alfieteam_node_4
+    entities:
+    - platform: climate
+      name: UFH Controller
+      notes: Suggested logical entity; needs setpoint & relay mapping in firmware/HA.
+    - platform: sensor
+      can_id: 0x161
+      name: Thermistor Sensor 1
+      device_class: temperature
+      unit_of_measurement: °C
+    - platform: sensor
+      can_id: 0x162
+      name: Thermistor Sensor 2
+      device_class: temperature
+      unit_of_measurement: °C
+- id: 5
+  name: Power Relay Module
+  can_range:
+  - 0x181
+  - 0x190
+  description: Module for controlling high-power devices like boiler and towel rail.
+  devices:
+  - id: 0x181
+    name: Boiler Relay
+    description: Controls the boiler power relay (ON/OFF).
+  - id: 0x182
+    name: Towel Rail Relay
+    description: Controls the towel rail power relay (ON/OFF).
+  module_type: relays
+  ha:
+    device:
+      manufacturer: AlfieTeam
+      model: Power Relay Module
+      identifiers:
+      - alfieteam_node_5
+    entities:
+    - platform: switch
+      can_id: 0x181
+      name: Boiler Relay
+    - platform: switch
+      can_id: 0x182
+      name: Towel Rail Relay
+- id: 6
+  name: DC Dimming Module
+  can_range:
+  - 0x191
+  - 0x1B0
+  description: Module for controlling DC circuits with 4 PWM channels for dimming.
+  devices:
+  - id: 0x191
+    name: Channel 1 - PWM Control
+    description: Controls the brightness of the first DC light channel via PWM.
+  - id: 0x192
+    name: Channel 2 - PWM Control
+    description: Controls the brightness of the second DC light channel via PWM.
+  - id: 0x193
+    name: Channel 3 - PWM Control
+    description: Controls the brightness of the third DC light channel via PWM.
+  - id: 0x194
+    name: Channel 4 - PWM Control
+    description: Controls the brightness of the fourth DC light channel via PWM.
+  module_type: dc_dimmer
+  ha:
+    device:
+      manufacturer: AlfieTeam
+      model: DC Dimming Module
+      identifiers:
+      - alfieteam_node_6
+    entities:
+    - platform: light
+      can_id: 0x191
+      name: Channel 1 - PWM Control
+    - platform: light
+      can_id: 0x192
+      name: Channel 2 - PWM Control
+    - platform: light
+      can_id: 0x193
+      name: Channel 3 - PWM Control
+    - platform: light
+      can_id: 0x194
+      name: Channel 4 - PWM Control
+- id: 7
+  name: AC 0-10V Light Module
+  can_range:
+  - 0x201
+  - 0x220
+  description: Module for controlling AC lighting circuits with 0-10V dimming signals.
+  devices:
+  - id: 0x201
+    name: Channel 1 - 0-10V Dimmer
+    description: Controls the brightness of the first AC light channel.
+  - id: 0x202
+    name: Channel 2 - 0-10V Dimmer
+    description: Controls the brightness of the second AC light channel.
+  - id: 0x203
+    name: Channel 3 - 0-10V Dimmer
+    description: Controls the brightness of the third AC light channel.
+  - id: 0x204
+    name: Channel 4 - 0-10V Dimmer
+    description: Controls the brightness of the fourth AC light channel.
+  module_type: ac_dimmer_0_10v
+  ha:
+    device:
+      manufacturer: AlfieTeam
+      model: AC 0-10V Light Module
+      identifiers:
+      - alfieteam_node_7
+    entities:
+    - platform: light
+      can_id: 0x201
+      name: Channel 1 - 0-10V Dimmer
+    - platform: light
+      can_id: 0x202
+      name: Channel 2 - 0-10V Dimmer
+    - platform: light
+      can_id: 0x203
+      name: Channel 3 - 0-10V Dimmer
+    - platform: light
+      can_id: 0x204
+      name: Channel 4 - 0-10V Dimmer
+- id: 8
+  name: Window Blind Module
+  can_range:
+  - 0x221
+  - 0x230
+  description: Module for controlling one window blind with up, down, and stop functions.
+  devices:
+  - id: 0x221
+    name: Blind - Up
+    description: Raises the window blind.
+  - id: 0x222
+    name: Blind - Down
+    description: Lowers the window blind.
+  - id: 0x223
+    name: Blind - Stop
+    description: Stops the window blind movement.
+  module_type: cover_blinds
+  ha:
+    device:
+      manufacturer: AlfieTeam
+      model: Window Blind Module
+      identifiers:
+      - alfieteam_node_8
+    entities:
+    - platform: cover
+      name: Window Blind
+      command_open: 0x221
+      command_close: 0x222
+      command_stop: 0x223
+    - platform: button
+      can_id: 0x221
+      name: Blind - Up
+    - platform: button
+      can_id: 0x222
+      name: Blind - Down
+    - platform: button
+      can_id: 0x223
+      name: Blind - Stop
+- id: 9
+  name: MVHR Module
+  can_range:
+  - 0x231
+  - 0x240
+  description: Module for ventilation and heating recovery with temperature, pressure, and humidity sensors (BMP280).
+  sensors:
+  - id: 0x231
+    name: Temperature Sensor (BMP280)
+    description: Measures ambient temperature for ventilation system.
+  - id: 0x232
+    name: Humidity Sensor (BMP280)
+    description: Measures ambient humidity for ventilation system.
+  - id: 0x233
+    name: Pressure Sensor (BMP280)
+    description: Measures ambient pressure for ventilation system.
+  module_type: ventilation
+  ha:
+    device:
+      manufacturer: AlfieTeam
+      model: MVHR Module
+      identifiers:
+      - alfieteam_node_9
+    entities:
+    - platform: sensor
+      can_id: 0x231
+      name: Temperature Sensor (BMP280)
+      device_class: temperature
+      unit_of_measurement: °C
+    - platform: sensor
+      can_id: 0x232
+      name: Humidity Sensor (BMP280)
+      device_class: humidity
+      unit_of_measurement: '%'
+    - platform: sensor
+      can_id: 0x233
+      name: Pressure Sensor (BMP280)
+      device_class: pressure
+      unit_of_measurement: hPa
+- id: 10
+  name: 2nd Sensors Module
+  can_range:
+  - 0x241
+  - 0x260
+  description: This module supports additional sensors such as door sensors, water meters, water pressure, PIR, and IR for air conditioning.
+  sensors:
+  - id: 0x241
+    name: Door Sensor
+    description: Detects whether the door is open or closed.
+  - id: 0x242
+    name: Water Meter
+    description: Measures water usage in liters.
+  - id: 0x243
+    name: Water Pressure Sensor
+    description: Measures water pressure in the pipeline.
+  - id: 0x244
+    name: PIR Sensor
+    description: Detects motion using a Passive Infrared Sensor.
+  - id: 0x245
+    name: IR Remote Controller
+    description: Controls air conditioning or other IR-enabled devices.
+  module_type: sensors
+  ha:
+    device:
+      manufacturer: AlfieTeam
+      model: 2nd Sensors Module
+      identifiers:
+      - alfieteam_node_10
+    entities:
+    - platform: binary_sensor
+      can_id: 0x241
+      name: Door Sensor
+      device_class: door
+    - platform: sensor
+      can_id: 0x242
+      name: Water Meter
+      device_class: water
+      unit_of_measurement: L
+    - platform: sensor
+      can_id: 0x243
+      name: Water Pressure Sensor
+      device_class: pressure
+      unit_of_measurement: hPa
+    - platform: binary_sensor
+      can_id: 0x244
+      name: PIR Sensor
+      device_class: motion
+    - platform: sensor
+      can_id: 0x245
+      name: IR Remote Controller
